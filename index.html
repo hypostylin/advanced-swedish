@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>AdvancedLessons · Swedish</title>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #050816;
+      --bg-elevated: #0b1020;
+      --bg-soft: #10172a;
+      --accent: #22c55e;
+      --accent-soft: rgba(34, 197, 94, 0.15);
+      --accent-strong: #16a34a;
+      --accent-alt: #38bdf8;
+      --border-subtle: #1f2937;
+      --text-main: #f9fafb;
+      --text-muted: #9ca3af;
+      --text-soft: #6b7280;
+      --danger: #f97373;
+      --danger-soft: rgba(248, 113, 113, 0.18);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-pill: 999px;
+      --shadow-soft: 0 18px 40px rgba(15, 23, 42, 0.8);
+      --shadow-subtle: 0 10px 30px rgba(15, 23, 42, 0.7);
+      --transition-fast: 0.15s ease-out;
+      --transition-med: 0.2s ease-out;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+      background: radial-gradient(circle at top, #111827 0, #020617 55%, #000 100%);
+      color: var(--text-main);
+    }
+
+    body {
+      display: flex;
+      align-items: stretch;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .app-shell {
+      display: flex;
+      width: 100%;
+      max-width: 1200px;
+      min-height: 620px;
+      max-height: 780px;
+      background: linear-gradient(135deg, rgba(15,23,42,0.95), rgba(15,23,42,0.98));
+      border-radius: 28px;
+      border: 1px solid rgba(148,163,184,0.25);
+      box-shadow: var(--shadow-soft);
+      overflow: hidden;
+      backdrop-filter: blur(20px);
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 260px;
+      padding: 20px 18px;
+      border-right: 1px solid var(--border-subtle);
+      background: radial-gradient(circle at top left, rgba(34,197,94,0.08), rgba(15,23,42,0.96) 50%, #020617 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }
+
+    .brand-logo {
+      width: 32px;
+      height: 32px;
+      border-radius: 12px;
+      background: radial-gradient(circle at 30% 10%, #bbf7d0, #22c55e 35%, #065f46 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 17px;
+      color: #022c22;
+      box-shadow: 0 0 0 2px rgba(15,23,42,0.7);
+    }
+
+    .brand-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .brand-title {
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .brand-subtitle {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .level-pill {
+      align-self: flex-start;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--text-muted);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .level-pill-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 999px;
+      background: #22c55e;
+      box-shadow: 0 0 0 4px rgba(34,197,94,0.3);
+    }
+
+    .nav-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: var(--text-soft);
+      margin-top: 8px;
+      margin-bottom: 4px;
+    }
+
+    .nav-list {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .nav-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 8px 10px;
+      border-radius: 12px;
+      font-size: 13px;
+      cursor: pointer;
+      border: 1px solid transparent;
+      color: var(--text-muted);
+      transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+    }
+
+    .nav-item-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .nav-icon {
+      width: 24px;
+      height: 24px;
+      border-radius: 10px;
+      background: radial-gradient(circle at 25% 20%, #1f2937 0, #020617 60%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+    }
+
+    .nav-item span {
+      font-weight: 500;
+    }
+
+    .nav-item small {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .nav-item.active {
+      background: radial-gradient(circle at top left, rgba(34,197,94,0.16), rgba(15,23,42,0.8));
+      border-color: rgba(34,197,94,0.6);
+      color: var(--text-main);
+      transform: translateY(-1px);
+    }
+
+    .nav-item:hover:not(.active) {
+      background: rgba(15,23,42,0.9);
+      border-color: rgba(148,163,184,0.4);
+      color: #e5e7eb;
+    }
+
+    .nav-badge {
+      font-size: 10px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.4);
+      color: var(--text-soft);
+    }
+
+    .sidebar-footer {
+      margin-top: auto;
+      border-top: 1px dashed rgba(55,65,81,0.7);
+      padding-top: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .xp-text {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .xp-highlight {
+      color: #a5b4fc;
+      font-weight: 500;
+    }
+
+    .xp-bar {
+      height: 7px;
+      border-radius: 999px;
+      background: radial-gradient(circle at top left, #020617, #020617);
+      border: 1px solid rgba(55,65,81,0.9);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .xp-fill {
+      position: absolute;
+      inset: 0;
+      width: 42%;
+      background: linear-gradient(90deg, #22c55e, #38bdf8, #a855f7);
+      box-shadow: 0 0 8px rgba(56,189,248,0.5);
+    }
+
+    .tip-text {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .tip-key {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(55,65,81,0.8);
+      color: #e5e7eb;
+    }
+
+    /* Main */
+    .main {
+      flex: 1;
+      padding: 20px 22px 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .main-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .title-block {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .title-block h1 {
+      margin: 0;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .title-chip {
+      font-size: 11px;
+      padding: 3px 8px;
+      border-radius: 999px;
+      background: rgba(55,65,81,0.9);
+      border: 1px solid rgba(75,85,99,0.9);
+      color: #e5e7eb;
+    }
+
+    .subtitle {
+      margin: 0;
+      font-size: 13px;
+      color: var(--text-soft);
+    }
+
+    .streak-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: radial-gradient(circle at 20% 0, rgba(251,191,36,0.18), rgba(15,23,42,0.95));
+      border: 1px solid rgba(245,158,11,0.7);
+      font-size: 11px;
+      color: #fed7aa;
+      box-shadow: var(--shadow-subtle);
+    }
+
+    .streak-pill-emoji {
+      filter: drop-shadow(0 0 6px rgba(245,158,11,0.7));
+    }
+
+    /* Panels */
+    .panels {
+      flex: 1;
+      display: grid;
+      grid-template-columns: minmax(0, 2.3fr) minmax(0, 2fr);
+      gap: 14px;
+      min-height: 0;
+    }
+
+    .panel {
+      background: radial-gradient(circle at top left, rgba(15,23,42,0.95), rgba(15,23,42,0.98));
+      border-radius: var(--radius-lg);
+      border: 1px solid rgba(31,41,55,0.9);
+      box-shadow: var(--shadow-subtle);
+      padding: 14px 14px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0;
+    }
+
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .panel-header-left {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .panel-title {
+      margin: 0;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .panel-pill {
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 999px;
+      border: 1px solid rgba(55,65,81,0.9);
+      color: var(--text-soft);
+    }
+
+    .panel-body {
+      flex: 1;
+      min-height: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    /* Flashcards */
+    .flashcard {
+      border-radius: 16px;
+      background: radial-gradient(circle at top left, rgba(34,197,94,0.18), rgba(15,23,42,0.97));
+      border: 1px solid rgba(34,197,94,0.75);
+      padding: 16px 14px;
+      box-shadow: 0 18px 40px rgba(22,163,74,0.24);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .flashcard-top-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+      font-size: 11px;
+      color: #bbf7d0;
+    }
+
+    .flashcard-tag-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 2px;
+    }
+
+    .tag {
+      padding: 3px 8px;
+      border-radius: 999px;
+      font-size: 11px;
+      border: 1px solid rgba(134,239,172,0.6);
+      background: rgba(16,185,129,0.12);
+      color: #bbf7d0;
+    }
+
+    .flashcard-word {
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+
+    .flashcard-phonetics {
+      font-size: 12px;
+      color: #a7f3d0;
+    }
+
+    .flashcard-translation {
+      font-size: 14px;
+      color: #dcfce7;
+    }
+
+    .flashcard-example-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      color: rgba(248,250,252,0.65);
+      margin-top: 4px;
+    }
+
+    .flashcard-example {
+      font-size: 13px;
+    }
+
+    .flashcard-example-en {
+      font-size: 12px;
+      color: rgba(226,232,240,0.85);
+    }
+
+    .flashcard-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 8px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .answer-buttons {
+      display: inline-flex;
+      gap: 6px;
+    }
+
+    .chip-btn {
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: 11px;
+      border: 1px solid rgba(34,197,94,0.5);
+      background: rgba(15,23,42,0.9);
+      color: #bbf7d0;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .chip-btn:hover {
+      background: rgba(16,185,129,0.2);
+      transform: translateY(-1px);
+      box-shadow: 0 8px 15px rgba(16,185,129,0.15);
+    }
+
+    .chip-btn.danger {
+      border-color: rgba(248,113,113,0.7);
+      color: #fecaca;
+    }
+
+    .chip-btn.danger:hover {
+      background: var(--danger-soft);
+      box-shadow: 0 8px 15px rgba(248,113,113,0.2);
+    }
+
+    .card-progress {
+      font-size: 11px;
+      color: #a5b4fc;
+    }
+
+    /* Sentence practice */
+    .sentence-card {
+      border-radius: 14px;
+      background: radial-gradient(circle at top right, rgba(56,189,248,0.15), rgba(15,23,42,0.98));
+      border: 1px solid rgba(59,130,246,0.6);
+      padding: 14px 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 15px 35px rgba(37,99,235,0.2);
+    }
+
+    .sentence-prompt-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      color: rgba(191,219,254,0.9);
+      letter-spacing: 0.12em;
+    }
+
+    .sentence-english {
+      font-size: 13px;
+      color: #e0f2fe;
+    }
+
+    .sentence-hint {
+      font-size: 11px;
+      color: rgba(191,219,254,0.75);
+    }
+
+    .sentence-input {
+      margin-top: 4px;
+      width: 100%;
+      border-radius: 10px;
+      border: 1px solid rgba(37,99,235,0.7);
+      background: rgba(15,23,42,0.96);
+      color: #eff6ff;
+      padding: 7px 10px;
+      font-size: 13px;
+      font-family: "Inter", system-ui;
+      outline: none;
+      box-shadow: 0 0 0 1px transparent;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+    }
+
+    .sentence-input:focus {
+      border-color: #38bdf8;
+      background: rgba(15,23,42,0.98);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.7);
+    }
+
+    .sentence-footer {
+      margin-top: 4px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .primary-btn {
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #22c55e, #14b8a6);
+      color: #022c22;
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 12px 25px rgba(34,197,94,0.35);
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), filter var(--transition-fast);
+    }
+
+    .primary-btn:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 16px 30px rgba(34,197,94,0.4);
+      filter: brightness(1.05);
+    }
+
+    .primary-btn.secondary {
+      background: rgba(15,23,42,0.95);
+      color: #e5e7eb;
+      border: 1px solid rgba(148,163,184,0.6);
+      box-shadow: none;
+    }
+
+    .primary-btn.secondary:hover {
+      background: rgba(31,41,55,0.95);
+      box-shadow: 0 12px 26px rgba(15,23,42,0.9);
+    }
+
+    .sentence-feedback {
+      font-size: 12px;
+      min-height: 16px;
+    }
+
+    .sentence-feedback.ok {
+      color: #bbf7d0;
+    }
+
+    .sentence-feedback.error {
+      color: #fecaca;
+    }
+
+    /* Cloze */
+    .cloze-card {
+      border-radius: 14px;
+      padding: 12px 11px;
+      background: radial-gradient(circle at top left, rgba(168,85,247,0.2), rgba(15,23,42,0.98));
+      border: 1px solid rgba(168,85,247,0.7);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 15px 35px rgba(109,40,217,0.28);
+      font-size: 13px;
+    }
+
+    .cloze-text {
+      line-height: 1.5;
+    }
+
+    .cloze-gap {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 60px;
+      min-height: 20px;
+      padding: 2px 6px;
+      margin: 0 2px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.96);
+      border: 1px dashed rgba(148,163,184,0.8);
+      font-size: 12px;
+      color: rgba(209,213,219,0.9);
+    }
+
+    .cloze-options {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    .cloze-option {
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(148,163,184,0.8);
+      background: rgba(15,23,42,0.96);
+      font-size: 12px;
+      cursor: pointer;
+      transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
+    }
+
+    .cloze-option:hover {
+      background: rgba(129,140,248,0.2);
+      transform: translateY(-1px);
+      border-color: rgba(129,140,248,0.9);
+    }
+
+    .cloze-option.selected {
+      background: rgba(129,140,248,0.35);
+      border-color: rgba(129,140,248,1);
+    }
+
+    .note-panel {
+      border-radius: 14px;
+      background: radial-gradient(circle at top right, rgba(15,23,42,0.95), rgba(15,23,42,0.98));
+      border: 1px solid rgba(55,65,81,0.9);
+      padding: 10px 10px 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      font-size: 12px;
+    }
+
+    .note-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      color: var(--text-soft);
+    }
+
+    .note-area {
+      border-radius: 10px;
+      border: 1px solid rgba(55,65,81,0.95);
+      background: rgba(15,23,42,0.98);
+      color: #e5e7eb;
+      padding: 8px 9px;
+      min-height: 90px;
+      resize: vertical;
+      font-size: 12px;
+      font-family: "JetBrains Mono", monospace;
+      outline: none;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+    }
+
+    .note-area:focus {
+      border-color: rgba(56,189,248,0.9);
+      box-shadow: 0 0 0 1px rgba(56,189,248,0.7);
+    }
+
+    .note-helper {
+      font-size: 11px;
+      color: var(--text-soft);
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    /* Utility */
+    .pill-muted {
+      font-size: 11px;
+      color: var(--text-soft);
+    }
+
+    .kbd-inline {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 11px;
+      padding: 1px 6px;
+      border-radius: 999px;
+      background: rgba(15,23,42,0.9);
+      border: 1px solid rgba(55,65,81,0.9);
+      color: #e5e7eb;
+    }
+
+    /* Responsive */
+    @media (max-width: 960px) {
+      body {
+        padding: 10px;
+      }
+
+      .app-shell {
+        flex-direction: column;
+        max-height: none;
+      }
+
+      .sidebar {
+        width: 100%;
+        flex-direction: row;
+        align-items: center;
+        flex-wrap: wrap;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+      }
+
+      .sidebar-footer {
+        margin-top: 0;
+        margin-left: auto;
+        border-top: none;
+        border-left: 1px dashed rgba(55,65,81,0.7);
+        padding-top: 0;
+        padding-left: 10px;
+      }
+
+      .panels {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 720px) {
+      .sidebar {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      .sidebar-footer {
+        border-left: none;
+        border-top: 1px dashed rgba(55,65,81,0.7);
+        margin-top: 6px;
+        padding-top: 8px;
+        padding-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="app-shell">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div>
+        <div class="brand">
+          <div class="brand-logo">Sv</div>
+          <div class="brand-text">
+            <div class="brand-title">AdvancedLessons</div>
+            <div class="brand-subtitle">Svenska · C1–C2</div>
+          </div>
+        </div>
+        <div class="level-pill">
+          <span class="level-pill-dot"></span>
+          <span>Today’s focus: konnektorer & ordföljd</span>
+        </div>
+      </div>
+
+      <div>
+        <div class="nav-label">Modes</div>
+        <nav class="nav-list">
+          <button class="nav-item active" data-view="flashcards">
+            <div class="nav-item-left">
+              <div class="nav-icon">🧠</div>
+              <div>
+                <span>Flashcards</span><br>
+                <small>Advanced vocab & chunks</small>
+              </div>
+            </div>
+            <div class="nav-badge" id="nav-flash-badge">0 / 0</div>
+          </button>
+          <button class="nav-item" data-view="sentences">
+            <div class="nav-item-left">
+              <div class="nav-icon">✏️</div>
+              <div>
+                <span>Sentences</span><br>
+                <small>Word order & nuance</small>
+              </div>
+            </div>
+            <div class="nav-badge" id="nav-sent-badge">0 / 0</div>
+          </button>
+          <button class="nav-item" data-view="cloze">
+            <div class="nav-item-left">
+              <div class="nav-icon">📖</div>
+              <div>
+                <span>Cloze reading</span><br>
+                <small>Fill in advanced text</small>
+              </div>
+            </div>
+            <div class="nav-badge" id="nav-cloze-badge">0 / 0</div>
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="xp-text">
+          Session XP: <span class="xp-highlight" id="xp-value">0</span>
+        </div>
+        <div class="xp-bar">
+          <div class="xp-fill" id="xp-bar"></div>
+        </div>
+        <div class="tip-text">
+          Tip: press <span class="tip-key">Enter</span> to check sentences faster.
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main -->
+    <main class="main">
+      <header class="main-header">
+        <div class="title-block">
+          <h1>
+            Advanced Swedish Studio
+            <span class="title-chip">session · 25 min</span>
+          </h1>
+          <p class="subtitle">
+            Train high-level patterns: <strong>trots att</strong>, sentence adverbials, passive, and subtle register changes.
+          </p>
+        </div>
+        <div class="streak-pill">
+          <span class="streak-pill-emoji">🔥</span>
+          <span id="streak-label">Streak: 0 days</span>
+        </div>
+      </header>
+
+      <section class="panels">
+        <!-- Left: primary interaction (changes per view) -->
+        <section class="panel" id="panel-left">
+          <div class="panel-header">
+            <div class="panel-header-left">
+              <h2 class="panel-title" id="panel-left-title">Flashcards · Aktivt ordförråd</h2>
+              <span class="panel-pill" id="panel-left-subtitle">Tap to reveal nuance</span>
+            </div>
+            <span class="pill-muted" id="panel-left-counter"></span>
+          </div>
+          <div class="panel-body" id="panel-left-body">
+            <!-- Flashcard content injected here -->
+          </div>
+        </section>
+
+        <!-- Right: supporting content -->
+        <section class="panel" id="panel-right">
+          <div class="panel-header">
+            <div class="panel-header-left">
+              <h2 class="panel-title" id="panel-right-title">Cloze & notes</h2>
+              <span class="panel-pill" id="panel-right-subtitle">Context + your own examples</span>
+            </div>
+          </div>
+          <div class="panel-body" id="panel-right-body">
+            <!-- Cloze / notes injected here -->
+          </div>
+        </section>
+      </section>
+    </main>
+  </div>
+
+  <script>
+    // --- Content data ---------------------------------------------------------
+    const FLASHCARDS = [
+      {
+        swedish: "trots att",
+        phonetics: "trots att",
+        translation: "even though / despite the fact that",
+        example_sv: "Hon gick till mötet trots att hon egentligen var sjuk.",
+        example_en: "She went to the meeting even though she was actually ill.",
+        tags: ["konjunktion", "kontrast", "skriftspråk"],
+      },
+      {
+        swedish: "ju ... desto",
+        phonetics: "ju ... desto",
+        translation: "the ... the (correlative construction)",
+        example_sv: "Ju mer jag läser svenska, desto enklare känns nyheterna.",
+        example_en: "The more I read Swedish, the easier the news feels.",
+        tags: ["struktur", "satsadverbial"],
+      },
+      {
+        swedish: "i synnerhet",
+        phonetics: "i syn-ner-het",
+        translation: "in particular / especially",
+        example_sv: "Det här är viktigt, i synnerhet för studenter som redan jobbar heltid.",
+        example_en: "This is important, in particular for students who already work full-time.",
+        tags: ["fras", "formellt"],
+      },
+      {
+        swedish: "å ena sidan ... å andra sidan",
+        phonetics: "å ena sidan ... å andra sidan",
+        translation: "on the one hand ... on the other hand",
+        example_sv: "Å ena sidan vill jag flytta till Sverige, å andra sidan har jag hela mitt liv här.",
+        example_en: "On the one hand I want to move to Sweden, on the other hand my whole life is here.",
+        tags: ["strukturerad argumentation"],
+      },
+      {
+        swedish: "det vill säga (dvs.)",
+        phonetics: "de vill sä-ja",
+        translation: "that is / i.e.",
+        example_sv: "Kursen är på avancerad nivå, det vill säga du förväntas vara självgående.",
+        example_en: "The course is at an advanced level, that is, you are expected to work independently.",
+        tags: ["förklaring", "formellt"],
+      },
+      {
+        swedish: "hade kunnat",
+        phonetics: "hadd-e kunn-at",
+        translation: "could have (done something)",
+        example_sv: "Jag hade kunnat förbereda mig bättre om jag hade haft mer tid.",
+        example_en: "I could have prepared better if I had had more time.",
+        tags: ["modalt hjälpverb", "hypotetiskt"],
+      },
+      {
+        swedish: "kommer att ha gjort",
+        phonetics: "kommer att ha gjort",
+        translation: "will have done (future perfect)",
+        example_sv: "Om ett år kommer jag att ha bott i Sverige i ett decennium.",
+        example_en: "In a year I will have lived in Sweden for a decade.",
+        tags: ["tempus", "framtid"],
+      },
+      {
+        swedish: "i efterhand",
+        phonetics: "i efter-hand",
+        translation: "in hindsight / afterwards",
+        example_sv: "I efterhand inser jag att det var ett modigt beslut.",
+        example_en: "In hindsight I realize it was a brave decision.",
+        tags: ["tid", "reflektion"],
+      }
+    ];
+
+    const SENTENCES = [
+      {
+        english: "Even though I was exhausted, I kept speaking Swedish the whole evening.",
+        swedish: "Trots att jag var helt utmattad fortsatte jag att prata svenska hela kvällen.",
+        hint: "Start with 'Trots att...', keep verb in second position.",
+      },
+      {
+        english: "The more I listen to Swedish radio, the easier it is to follow fast conversations.",
+        swedish: "Ju mer jag lyssnar på svensk radio, desto lättare är det att följa snabba konversationer.",
+        hint: "Remember 'ju ... desto' and inversion in the second clause.",
+      },
+      {
+        english: "On the one hand I miss my friends, on the other hand I really enjoy my life in Stockholm.",
+        swedish: "Å ena sidan saknar jag mina vänner, å andra sidan trivs jag verkligen med mitt liv i Stockholm.",
+        hint: "Repeat the subject 'jag' only once.",
+      },
+      {
+        english: "In hindsight I realize that I could have asked for more support.",
+        swedish: "I efterhand inser jag att jag hade kunnat be om mer stöd.",
+        hint: "Use 'hade kunnat' for 'could have'.",
+      },
+      {
+        english: "By next summer I will have finished all the advanced Swedish courses.",
+        swedish: "Till nästa sommar kommer jag att ha avslutat alla avancerade svenskakurser.",
+        hint: "Use future perfect: 'kommer att ha' + supinum.",
+      }
+    ];
+
+    const CLOZE_ITEMS = [
+      {
+        textBefore: "Ju mer jag övar på att skriva på svenska,",
+        gap: "desto",
+        textAfter: " tryggare känner jag mig när jag mejlar kollegor.",
+        options: ["också", "desto", "nästan"],
+        explanation: "Remember the pattern 'ju ... desto' for correlating two degrees.",
+      },
+      {
+        textBefore: "Det var ett spontant beslut,",
+        gap: "i efterhand",
+        textAfter: " inser jag att det faktiskt var ganska genomtänkt.",
+        options: ["i efterhand", "dessutom", "plötsligt"],
+        explanation: "We use 'i efterhand' for reflection in hindsight.",
+      },
+      {
+        textBefore: "Kursen är helt digital,",
+        gap: "det vill säga",
+        textAfter: " du kan delta var du än befinner dig.",
+        options: ["det vill säga", "så länge", "liksom"],
+        explanation: "'Det vill säga' introduces a clarification or rephrasing.",
+      }
+    ];
+
+    // --- State ----------------------------------------------------------------
+    let currentView = "flashcards"; // 'flashcards' | 'sentences' | 'cloze'
+    let flashIndex = 0;
+    let sentenceIndex = 0;
+    let clozeIndex = 0;
+    let selectedClozeOption = null;
+
+    const STORAGE_KEYS = {
+      streak: "sv_advanced_streak_days",
+      streakLastDate: "sv_advanced_streak_last_date",
+      xp: "sv_advanced_session_xp",
+      notes: "sv_advanced_notes",
+      flashProgress: "sv_advanced_flash_progress",
+    };
+
+    function todayKey() {
+      const d = new Date();
+      return d.toISOString().slice(0, 10); // YYYY-MM-DD
+    }
+
+    function loadNumber(key, fallback = 0) {
+      const raw = localStorage.getItem(key);
+      if (!raw) return fallback;
+      const n = Number(raw);
+      return Number.isFinite(n) ? n : fallback;
+    }
+
+    function saveNumber(key, value) {
+      localStorage.setItem(key, String(value));
+    }
+
+    function addXp(amount) {
+      const current = loadNumber(STORAGE_KEYS.xp, 0);
+      const updated = current + amount;
+      saveNumber(STORAGE_KEYS.xp, updated);
+      updateXpUI(updated);
+    }
+
+    function updateXpUI(value) {
+      const xpSpan = document.getElementById("xp-value");
+      const bar = document.getElementById("xp-bar");
+      xpSpan.textContent = value;
+      const capped = Math.min(value, 120);
+      const pct = Math.max(8, Math.round((capped / 120) * 100));
+      bar.style.width = pct + "%";
+    }
+
+    function updateStreak() {
+      const lastDate = localStorage.getItem(STORAGE_KEYS.streakLastDate);
+      const streak = loadNumber(STORAGE_KEYS.streak, 0);
+      const today = todayKey();
+
+      let newStreak = streak;
+
+      if (!lastDate) {
+        newStreak = 1;
+      } else if (lastDate === today) {
+        newStreak = streak || 1;
+      } else {
+        const last = new Date(lastDate);
+        const now = new Date(today);
+        const diffMs = now - last;
+        const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+        if (diffDays === 1) {
+          newStreak = streak + 1;
+        } else if (diffDays > 1) {
+          newStreak = 1;
+        }
+      }
+
+      saveNumber(STORAGE_KEYS.streak, newStreak);
+      localStorage.setItem(STORAGE_KEYS.streakLastDate, today);
+
+      const label = document.getElementById("streak-label");
+      label.textContent = `Streak: ${newStreak} day${newStreak === 1 ? "" : "s"}`;
+    }
+
+    // --- Rendering: Panels ----------------------------------------------------
+    function render() {
+      updateNavBadges();
+      if (currentView === "flashcards") {
+        renderFlashcardsView();
+      } else if (currentView === "sentences") {
+        renderSentencesView();
+      } else {
+        renderClozeView();
+      }
+    }
+
+    function updateNavBadges() {
+      document.getElementById("nav-flash-badge").textContent = `${flashIndex + 1} / ${FLASHCARDS.length}`;
+      document.getElementById("nav-sent-badge").textContent = `${sentenceIndex + 1} / ${SENTENCES.length}`;
+      document.getElementById("nav-cloze-badge").textContent = `${clozeIndex + 1} / ${CLOZE_ITEMS.length}`;
+    }
+
+    function renderFlashcardsView() {
+      const card = FLASHCARDS[flashIndex];
+      const leftTitle = document.getElementById("panel-left-title");
+      const leftSubtitle = document.getElementById("panel-left-subtitle");
+      const leftBody = document.getElementById("panel-left-body");
+      const leftCounter = document.getElementById("panel-left-counter");
+      const rightTitle = document.getElementById("panel-right-title");
+      const rightSubtitle = document.getElementById("panel-right-subtitle");
+      const rightBody = document.getElementById("panel-right-body");
+
+      leftTitle.textContent = "Flashcards · Aktivt ordförråd";
+      leftSubtitle.textContent = "Mark cards as easy / good / hard";
+      leftCounter.textContent = `Kort ${flashIndex + 1} av ${FLASHCARDS.length}`;
+
+      rightTitle.textContent = "Cloze · konnektorer";
+      rightSubtitle.textContent = "Snabb läsövning + dina egna exempel";
+
+      // Left: flashcard
+      leftBody.innerHTML = "";
+      const flashEl = document.createElement("div");
+      flashEl.className = "flashcard";
+      flashEl.innerHTML = `
+        <div class="flashcard-top-row">
+          <span>Aktivt kort · nivå C</span>
+          <span>${card.tags.map(t => "#" + t).join(" · ")}</span>
+        </div>
+        <div class="flashcard-word">${card.swedish}</div>
+        <div class="flashcard-phonetics">${card.phonetics}</div>
+        <div class="flashcard-translation">${card.translation}</div>
+        <div class="flashcard-example-label">Exempel</div>
+        <div class="flashcard-example">${card.example_sv}</div>
+        <div class="flashcard-example-en">${card.example_en}</div>
+        <div class="flashcard-actions">
+          <div class="answer-buttons">
+            <button class="chip-btn danger" data-ease="hard">😵 Svårt</button>
+            <button class="chip-btn" data-ease="good">🙂 Okej</button>
+            <button class="chip-btn" data-ease="easy">😌 Lätt</button>
+          </div>
+          <div class="card-progress">Kort ${flashIndex + 1} / ${FLASHCARDS.length}</div>
+        </div>
+      `;
+      leftBody.appendChild(flashEl);
+
+      flashEl.querySelectorAll(".chip-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          const ease = btn.getAttribute("data-ease");
+          handleFlashEase(ease);
+        });
+      });
+
+      // Right: cloze + notes combined
+      rightBody.innerHTML = "";
+      const cloze = CLOZE_ITEMS[clozeIndex];
+      const clozeContainer = document.createElement("div");
+      clozeContainer.className = "cloze-card";
+      clozeContainer.innerHTML = `
+        <div class="cloze-text">
+          ${cloze.textBefore}
+          <span class="cloze-gap" id="cloze-gap">${"____"}</span>
+          ${cloze.textAfter}
+        </div>
+        <div class="cloze-options" id="cloze-options"></div>
+        <div class="sentence-feedback" id="cloze-feedback"></div>
+      `;
+      rightBody.appendChild(clozeContainer);
+
+      const optsContainer = clozeContainer.querySelector("#cloze-options");
+      cloze.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.className = "cloze-option";
+        btn.textContent = option;
+        btn.addEventListener("click", () => {
+          selectedClozeOption = option;
+          clozeContainer.querySelectorAll(".cloze-option").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+
+          const feedbackEl = clozeContainer.querySelector("#cloze-feedback");
+          const gapEl = clozeContainer.querySelector("#cloze-gap");
+          if (option === cloze.gap) {
+            feedbackEl.textContent = "✅ Rätt! " + cloze.explanation;
+            feedbackEl.className = "sentence-feedback ok";
+            gapEl.textContent = cloze.gap;
+            addXp(4);
+          } else {
+            feedbackEl.textContent = "❌ Inte riktigt. Försök igen.";
+            feedbackEl.className = "sentence-feedback error";
+          }
+        });
+        optsContainer.appendChild(btn);
+      });
+
+      const notePanel = document.createElement("div");
+      notePanel.className = "note-panel";
+      notePanel.innerHTML = `
+        <div class="note-label">Egna exempel</div>
+        <textarea class="note-area" id="note-area" placeholder="Skriv dina egna meningar med dagens uttryck här..."></textarea>
+        <div class="note-helper">
+          <span>Skriv korta exempel, gärna med olika ordföljd.</span>
+          <span>Autosparat · <span id="note-status">ändrad</span></span>
+        </div>
+      `;
+      rightBody.appendChild(notePanel);
+
+      const notesArea = notePanel.querySelector("#note-area");
+      const savedNotes = localStorage.getItem(STORAGE_KEYS.notes) || "";
+      notesArea.value = savedNotes;
+      const noteStatus = notePanel.querySelector("#note-status");
+      noteStatus.textContent = "sparad";
+      notesArea.addEventListener("input", () => {
+        localStorage.setItem(STORAGE_KEYS.notes, notesArea.value);
+        noteStatus.textContent = "sparad";
+      });
+    }
+
+    function renderSentencesView() {
+      const item = SENTENCES[sentenceIndex];
+      const leftTitle = document.getElementById("panel-left-title");
+      const leftSubtitle = document.getElementById("panel-left-subtitle");
+      const leftBody = document.getElementById("panel-left-body");
+      const leftCounter = document.getElementById("panel-left-counter");
+      const rightTitle = document.getElementById("panel-right-title");
+      const rightSubtitle = document.getElementById("panel-right-subtitle");
+      const rightBody = document.getElementById("panel-right-body");
+
+      leftTitle.textContent = "Satsbygge · Ordföljd";
+      leftSubtitle.textContent = "Skriv hela meningen på svenska";
+      leftCounter.textContent = `Mening ${sentenceIndex + 1} av ${SENTENCES.length}`;
+
+      rightTitle.textContent = "Mini-grammatik";
+      rightSubtitle.textContent = "Kort påminnelse för dagens struktur";
+
+      leftBody.innerHTML = "";
+      const card = document.createElement("div");
+      card.className = "sentence-card";
+      card.innerHTML = `
+        <div class="sentence-prompt-label">Engelsk utgångspunkt</div>
+        <div class="sentence-english">${item.english}</div>
+        <div class="sentence-hint">Tips: ${item.hint}</div>
+        <input type="text" class="sentence-input" id="sentence-input" placeholder="Skriv meningen på svenska här..." autocomplete="off">
+        <div class="sentence-footer">
+          <button class="primary-btn" id="sentence-check">✔ Kontrollera</button>
+          <button class="primary-btn secondary" id="sentence-show">👁 Visa facit</button>
+        </div>
+        <div class="sentence-feedback" id="sentence-feedback"></div>
+      `;
+      leftBody.appendChild(card);
+
+      const input = card.querySelector("#sentence-input");
+      const checkBtn = card.querySelector("#sentence-check");
+      const showBtn = card.querySelector("#sentence-show");
+      const feedback = card.querySelector("#sentence-feedback");
+
+      function normalize(text) {
+        return text.trim().replace(/\s+/g, " ");
+      }
+
+      function checkSentence() {
+        const user = normalize(input.value);
+        const target = normalize(item.swedish);
+        if (!user) return;
+        if (user === target) {
+          feedback.textContent = "✅ Jättebra! Meningen är korrekt.";
+          feedback.className = "sentence-feedback ok";
+          addXp(6);
+        } else {
+          feedback.textContent = "⚠ Nästan. Jämför din ordföljd med facit.";
+          feedback.className = "sentence-feedback error";
+        }
+      }
+
+      checkBtn.addEventListener("click", checkSentence);
+      showBtn.addEventListener("click", () => {
+        feedback.textContent = "Facit: " + item.swedish;
+        feedback.className = "sentence-feedback ok";
+      });
+
+      input.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          checkSentence();
+        }
+      });
+
+      setTimeout(() => input.focus(), 30);
+
+      // Right: short grammar hints
+      rightBody.innerHTML = `
+        <div class="note-panel">
+          <div class="note-label">Regel · påminnelse</div>
+          <div style="font-size: 13px; line-height: 1.6;">
+            <p><strong>Verb på plats 2:</strong> I huvudsats står det finita verbet alltid på plats 2, även efter uttryck som
+            <em>"Trots att..."</em>, <em>"Ju mer..."</em> och tidsadverbial.</p>
+            <p><strong>Ju ... desto:</strong> Första ledet börjar ofta med <em>ju + komparativ</em>, andra med <em>desto + komparativ</em>.
+            I andra satsen kommer verbet direkt efter <em>desto-frasen</em>.</p>
+            <p><strong>Tips:</strong> Försök läsa meningen högt. Känns rytmen naturlig? Ofta avslöjar prosodin var verbet borde stå.</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderClozeView() {
+      const item = CLOZE_ITEMS[clozeIndex];
+      const leftTitle = document.getElementById("panel-left-title");
+      const leftSubtitle = document.getElementById("panel-left-subtitle");
+      const leftBody = document.getElementById("panel-left-body");
+      const leftCounter = document.getElementById("panel-left-counter");
+      const rightTitle = document.getElementById("panel-right-title");
+      const rightSubtitle = document.getElementById("panel-right-subtitle");
+      const rightBody = document.getElementById("panel-right-body");
+
+      leftTitle.textContent = "Cloze-läsning";
+      leftSubtitle.textContent = "Fyll i rätt konnektor";
+      leftCounter.textContent = `Text ${clozeIndex + 1} av ${CLOZE_ITEMS.length}`;
+
+      rightTitle.textContent = "Snabb anteckning";
+      rightSubtitle.textContent = "Sammanfatta på svenska";
+
+      leftBody.innerHTML = "";
+      const clozeContainer = document.createElement("div");
+      clozeContainer.className = "cloze-card";
+      clozeContainer.innerHTML = `
+        <div class="cloze-text">
+          ${item.textBefore}
+          <span class="cloze-gap" id="cloze-gap-main">____</span>
+          ${item.textAfter}
+        </div>
+        <div class="cloze-options" id="cloze-options-main"></div>
+        <div class="sentence-feedback" id="cloze-feedback-main"></div>
+        <button class="primary-btn secondary" id="cloze-next">Nästa text →</button>
+      `;
+      leftBody.appendChild(clozeContainer);
+
+      const optsContainer = clozeContainer.querySelector("#cloze-options-main");
+      const feedback = clozeContainer.querySelector("#cloze-feedback-main");
+      const gapEl = clozeContainer.querySelector("#cloze-gap-main");
+      const nextBtn = clozeContainer.querySelector("#cloze-next");
+
+      item.options.forEach(option => {
+        const btn = document.createElement("button");
+        btn.className = "cloze-option";
+        btn.textContent = option;
+        btn.addEventListener("click", () => {
+          clozeContainer.querySelectorAll(".cloze-option").forEach(b => b.classList.remove("selected"));
+          btn.classList.add("selected");
+          if (option === item.gap) {
+            feedback.textContent = "✅ Precis! " + item.explanation;
+            feedback.className = "sentence-feedback ok";
+            gapEl.textContent = item.gap;
+            addXp(5);
+          } else {
+            feedback.textContent = "❌ Inte rätt. Fundera på vilken fras som logiskt binder ihop satserna.";
+            feedback.className = "sentence-feedback error";
+          }
+        });
+        optsContainer.appendChild(btn);
+      });
+
+      nextBtn.addEventListener("click", () => {
+        clozeIndex = (clozeIndex + 1) % CLOZE_ITEMS.length;
+        render();
+      });
+
+      // Right: summary notes
+      rightBody.innerHTML = `
+        <div class="note-panel">
+          <div class="note-label">Sammanfatta texten</div>
+          <textarea class="note-area" id="note-summary" placeholder="Skriv 1–2 meningar som sammanfattar klurigheterna i konnektorerna du just tränade på..."></textarea>
+          <div class="note-helper">
+            <span>Försök använda minst en ny fras från övningen.</span>
+          </div>
+        </div>
+      `;
+    }
+
+    // --- Handlers -------------------------------------------------------------
+    function handleFlashEase(ease) {
+      if (ease === "easy") {
+        addXp(3);
+        flashIndex = (flashIndex + 1) % FLASHCARDS.length;
+      } else if (ease === "good") {
+        addXp(2);
+        flashIndex = (flashIndex + 1) % FLASHCARDS.length;
+      } else if (ease === "hard") {
+        addXp(1);
+        // Show same card one more time, but still advance occasionally
+        if (Math.random() > 0.6) {
+          flashIndex = (flashIndex + 1) % FLASHCARDS.length;
+        }
+      }
+      render();
+    }
+
+    function setupNav() {
+      const navItems = document.querySelectorAll(".nav-item");
+      navItems.forEach(item => {
+        item.addEventListener("click", () => {
+          navItems.forEach(i => i.classList.remove("active"));
+          item.classList.add("active");
+          currentView = item.getAttribute("data-view");
+          render();
+        });
+      });
+    }
+
+    // --- Init -----------------------------------------------------------------
+    document.addEventListener("DOMContentLoaded", () => {
+      setupNav();
+      updateStreak();
+      const xp = loadNumber(STORAGE_KEYS.xp, 0);
+      updateXpUI(xp);
+      render();
+    });
+  </script>
+</body>
+</html>
