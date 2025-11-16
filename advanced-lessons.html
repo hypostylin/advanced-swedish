@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>AdvancedLessons</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		>
+		<link
+			href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@100;200;300;400;500;600;700;800&display=swap"
+			rel="stylesheet"
+		>
+		<link
+			href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&display=swap"
+			rel="stylesheet"
+		>
+		<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+		<script src="https://code.iconify.design/iconify-icon/3.0.0/iconify-icon.min.js"></script>
+		<style type="text/tailwindcss">
+		@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --font-font-sans: var(--font-sans);
+  --font-font-heading: var(--font-heading);
+  --font-font-serif: var(--font-serif);
+  --font-font-mono: var(--font-mono);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  --tracking-tighter: calc(var(--tracking-normal) - 0.05em);
+  --tracking-tight: calc(var(--tracking-normal) - 0.025em);
+  --tracking-wide: calc(var(--tracking-normal) + 0.025em);
+  --tracking-wider: calc(var(--tracking-normal) + 0.05em);
+  --tracking-widest: calc(var(--tracking-normal) + 0.1em);
+  --tracking-normal: var(--tracking-normal);
+}
+
+		:root {
+			--background: #f5f7fa;
+			--foreground: #1a1f36;
+			--primary: #0066cc;
+			--primary-foreground: #ffffff;
+			--secondary: #e8f0fe;
+			--secondary-foreground: #1a1f36;
+			--muted: #e1e8ed;
+			--muted-foreground: #6b7280;
+			--accent: #fdb022;
+			--accent-foreground: #1a1f36;
+			--destructive: #dc2626;
+			--card: #ffffff;
+			--card-foreground: #1a1f36;
+			--popover: #ffffff;
+			--popover-foreground: #1a1f36;
+			--border: #e1e8ed;
+			--input: #ffffff;
+			--ring: #0066cc;
+			--sidebar: #ffffff;
+			--sidebar-foreground: #1a1f36;
+			--sidebar-primary: #0066cc;
+			--sidebar-primary-foreground: #ffffff;
+			--sidebar-accent: #e8f0fe;
+			--sidebar-accent-foreground: #1a1f36;
+			--sidebar-border: #e1e8ed;
+			--sidebar-ring: #0066cc;
+			--chart-1: #0066cc;
+			--chart-2: #fdb022;
+			--chart-3: #10b981;
+			--chart-4: #8b5cf6;
+			--chart-5: #f59e0b;
+
+			--font-sans: "Inter";
+			--font-heading: "Inter";
+			--font-serif: "Playfair Display";
+			--font-mono: "JetBrains Mono";
+
+			--radius: 0.75rem;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="flex flex-col min-h-screen bg-background">
+			<div class="p-6 space-y-6">
+				<div class="flex items-center gap-3">
+					<button class="flex items-center justify-center size-11">
+						<iconify-icon
+							icon="solar:arrow-left-linear"
+							class="size-6 text-foreground"
+						></iconify-icon>
+					</button>
+					<div class="flex-1 space-y-1">
+						<h1 class="text-3xl font-bold text-foreground font-heading">Advanced Swedish</h1>
+						<p class="text-muted-foreground">
+							Master complex grammar and professional communication
+						</p>
+					</div>
+				</div>
+				<div class="space-y-3">
+					<div class="flex items-center justify-between text-sm">
+						<span class="font-medium text-foreground">Advanced Level Progress</span><span
+							class="text-primary font-semibold"
+							>42%</span
+						>
+					</div>
+					<div class="h-3 bg-muted rounded-full overflow-hidden">
+						<div class="h-full bg-primary w-[42%] rounded-full"/>
+					</div>
+					<div class="flex items-center gap-4 pt-2">
+						<div class="flex items-center gap-2">
+							<div class="size-3 rounded-full bg-[#8B5CF6]"/>
+							<span class="text-xs text-muted-foreground">Advanced</span>
+						</div>
+						<div class="flex items-center gap-2">
+							<div class="size-3 rounded-full bg-[#DC2626]"/>
+							<span class="text-xs text-muted-foreground">Expert</span>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="flex-1 px-6 pb-24 space-y-8">
+				<div class="space-y-4">
+					<div class="flex items-center gap-2">
+						<span
+							class="inline-flex items-center px-3 py-1 rounded-full bg-[#8B5CF6] text-white text-xs font-semibold"
+							>ADVANCED</span
+						>
+					</div>
+					<div class="bg-card rounded-2xl p-5 shadow-sm space-y-3">
+						<div class="flex items-center gap-4">
+							<div
+								class="size-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon icon="solar:case-bold" class="size-6 text-primary"></iconify-icon>
+							</div>
+							<div class="flex-1 min-w-0">
+								<h3 class="font-semibold text-foreground">Business Swedish</h3>
+								<p class="text-sm text-muted-foreground">Professional workplace communication</p>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="text-xs text-muted-foreground">45 min</span><span
+										class="text-xs text-muted-foreground"
+										>•</span
+									><span class="text-xs text-[#8B5CF6] font-medium">Advanced</span>
+								</div>
+							</div>
+							<div
+								class="size-8 rounded-full bg-[#10B981] flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:check-circle-bold"
+									class="size-5 text-white"
+								></iconify-icon>
+							</div>
+						</div>
+						<div class="h-2 bg-muted rounded-full overflow-hidden">
+							<div class="h-full bg-[#10B981] w-full rounded-full"/>
+						</div>
+					</div>
+					<div class="bg-card rounded-2xl p-5 shadow-sm space-y-3">
+						<div class="flex items-center gap-4">
+							<div
+								class="size-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:document-text-bold"
+									class="size-6 text-accent"
+								></iconify-icon>
+							</div>
+							<div class="flex-1 min-w-0">
+								<h3 class="font-semibold text-foreground">Subjunctive Mood</h3>
+								<p class="text-sm text-muted-foreground">Complex grammatical structures</p>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="text-xs text-muted-foreground">60 min</span><span
+										class="text-xs text-muted-foreground"
+										>•</span
+									><span class="text-xs text-[#8B5CF6] font-medium">Advanced</span>
+								</div>
+							</div>
+							<div class="size-8 flex items-center justify-center flex-shrink-0">
+								<span class="text-primary font-semibold text-sm">75%</span>
+							</div>
+						</div>
+						<div class="h-2 bg-muted rounded-full overflow-hidden">
+							<div class="h-full bg-primary w-[75%] rounded-full"/>
+						</div>
+					</div>
+					<div class="bg-card rounded-2xl p-5 shadow-sm space-y-3">
+						<div class="flex items-center gap-4">
+							<div
+								class="size-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:chat-round-line-bold"
+									class="size-6 text-primary"
+								></iconify-icon>
+							</div>
+							<div class="flex-1 min-w-0">
+								<h3 class="font-semibold text-foreground">Idiomatic Expressions</h3>
+								<p class="text-sm text-muted-foreground">Native speaker phrases and sayings</p>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="text-xs text-muted-foreground">35 min</span><span
+										class="text-xs text-muted-foreground"
+										>•</span
+									><span class="text-xs text-[#8B5CF6] font-medium">Advanced</span>
+								</div>
+							</div>
+							<div class="size-8 flex items-center justify-center flex-shrink-0">
+								<span class="text-primary font-semibold text-sm">30%</span>
+							</div>
+						</div>
+						<div class="h-2 bg-muted rounded-full overflow-hidden">
+							<div class="h-full bg-primary w-[30%] rounded-full"/>
+						</div>
+					</div>
+					<div class="bg-card rounded-2xl p-5 shadow-sm space-y-3">
+						<div class="flex items-center gap-4">
+							<div
+								class="size-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon icon="solar:pen-bold" class="size-6 text-accent"></iconify-icon>
+							</div>
+							<div class="flex-1 min-w-0">
+								<h3 class="font-semibold text-foreground">Complex Sentence Structures</h3>
+								<p class="text-sm text-muted-foreground">Advanced syntax and composition</p>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="text-xs text-muted-foreground">50 min</span><span
+										class="text-xs text-muted-foreground"
+										>•</span
+									><span class="text-xs text-[#8B5CF6] font-medium">Advanced</span>
+								</div>
+							</div>
+							<div
+								class="size-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:lock-keyhole-bold"
+									class="size-5 text-muted-foreground"
+								></iconify-icon>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="space-y-4">
+					<div class="flex items-center gap-2">
+						<span
+							class="inline-flex items-center px-3 py-1 rounded-full bg-[#DC2626] text-white text-xs font-semibold"
+							>EXPERT</span
+						>
+					</div>
+					<div class="bg-card rounded-2xl p-5 shadow-sm space-y-3">
+						<div class="flex items-center gap-4">
+							<div
+								class="size-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon icon="solar:book-2-bold" class="size-6 text-primary"></iconify-icon>
+							</div>
+							<div class="flex-1 min-w-0">
+								<h3 class="font-semibold text-foreground">Swedish Literature</h3>
+								<p class="text-sm text-muted-foreground">Classic and contemporary works</p>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="text-xs text-muted-foreground">90 min</span><span
+										class="text-xs text-muted-foreground"
+										>•</span
+									><span class="text-xs text-[#DC2626] font-medium">Expert</span>
+								</div>
+							</div>
+							<div
+								class="size-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:lock-keyhole-bold"
+									class="size-5 text-muted-foreground"
+								></iconify-icon>
+							</div>
+						</div>
+					</div>
+					<div class="bg-card rounded-2xl p-5 shadow-sm space-y-3">
+						<div class="flex items-center gap-4">
+							<div
+								class="size-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:presentation-graph-bold"
+									class="size-6 text-accent"
+								></iconify-icon>
+							</div>
+							<div class="flex-1 min-w-0">
+								<h3 class="font-semibold text-foreground">Professional Communication</h3>
+								<p class="text-sm text-muted-foreground">Business presentations and negotiations</p>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="text-xs text-muted-foreground">75 min</span><span
+										class="text-xs text-muted-foreground"
+										>•</span
+									><span class="text-xs text-[#DC2626] font-medium">Expert</span>
+								</div>
+							</div>
+							<div
+								class="size-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:lock-keyhole-bold"
+									class="size-5 text-muted-foreground"
+								></iconify-icon>
+							</div>
+						</div>
+					</div>
+					<div class="bg-card rounded-2xl p-5 shadow-sm space-y-3">
+						<div class="flex items-center gap-4">
+							<div
+								class="size-12 rounded-xl bg-primary/10 flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon icon="solar:diploma-bold" class="size-6 text-primary"></iconify-icon>
+							</div>
+							<div class="flex-1 min-w-0">
+								<h3 class="font-semibold text-foreground">Academic Swedish</h3>
+								<p class="text-sm text-muted-foreground">University-level language skills</p>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="text-xs text-muted-foreground">80 min</span><span
+										class="text-xs text-muted-foreground"
+										>•</span
+									><span class="text-xs text-[#DC2626] font-medium">Expert</span>
+								</div>
+							</div>
+							<div
+								class="size-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:lock-keyhole-bold"
+									class="size-5 text-muted-foreground"
+								></iconify-icon>
+							</div>
+						</div>
+					</div>
+					<div class="bg-card rounded-2xl p-5 shadow-sm space-y-3">
+						<div class="flex items-center gap-4">
+							<div
+								class="size-12 rounded-xl bg-accent/10 flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:chat-square-like-bold"
+									class="size-6 text-accent"
+								></iconify-icon>
+							</div>
+							<div class="flex-1 min-w-0">
+								<h3 class="font-semibold text-foreground">Cultural Nuances</h3>
+								<p class="text-sm text-muted-foreground">Deep cultural understanding and context</p>
+								<div class="flex items-center gap-2 mt-1">
+									<span class="text-xs text-muted-foreground">65 min</span><span
+										class="text-xs text-muted-foreground"
+										>•</span
+									><span class="text-xs text-[#DC2626] font-medium">Expert</span>
+								</div>
+							</div>
+							<div
+								class="size-8 rounded-full bg-muted flex items-center justify-center flex-shrink-0"
+							>
+								<iconify-icon
+									icon="solar:lock-keyhole-bold"
+									class="size-5 text-muted-foreground"
+								></iconify-icon>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="fixed bottom-0 left-0 right-0 bg-background border-t border-border">
+				<div class="flex items-center justify-around py-3 px-4">
+					<button class="flex flex-col items-center gap-1 flex-1">
+						<iconify-icon
+							icon="solar:home-2-bold"
+							class="size-6 text-muted-foreground"
+						></iconify-icon>
+						<span class="text-xs text-muted-foreground">Home</span>
+					</button>
+					<button class="flex flex-col items-center gap-1 flex-1">
+						<iconify-icon icon="solar:book-2-bold" class="size-6 text-primary"></iconify-icon>
+						<span class="text-xs text-primary font-semibold">Lessons</span>
+					</button>
+					<button class="flex flex-col items-center gap-1 flex-1">
+						<iconify-icon
+							icon="solar:chart-bold"
+							class="size-6 text-muted-foreground"
+						></iconify-icon>
+						<span class="text-xs text-muted-foreground">Progress</span>
+					</button>
+					<button class="flex flex-col items-center gap-1 flex-1">
+						<iconify-icon
+							icon="solar:user-bold"
+							class="size-6 text-muted-foreground"
+						></iconify-icon>
+						<span class="text-xs text-muted-foreground">Profile</span>
+					</button>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
