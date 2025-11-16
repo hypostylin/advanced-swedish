@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AdvancedLessons · Swedish</title>
 
+  <!-- 1:1 Swedish flag favicon (SVG) -->
+  <link
+    rel="icon"
+    type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%230052b4'/%3E%3Crect y='40' width='100' height='20' fill='%23ffda44'/%3E%3Crect x='40' width='20' height='100' fill='%23ffda44'/%3E%3C/svg%3E"
+  />
+
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -164,6 +171,7 @@
       border: 1px solid transparent;
       color: var(--text-muted);
       transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+      background: none;
     }
 
     .nav-item-left {
@@ -404,22 +412,6 @@
       align-items: center;
       gap: 10px;
       font-size: 11px;
-      color: #bbf7d0;
-    }
-
-    .flashcard-tag-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 2px;
-    }
-
-    .tag {
-      padding: 3px 8px;
-      border-radius: 999px;
-      font-size: 11px;
-      border: 1px solid rgba(134,239,172,0.6);
-      background: rgba(16,185,129,0.12);
       color: #bbf7d0;
     }
 
@@ -717,31 +709,24 @@
       flex-wrap: wrap;
     }
 
-    /* Utility */
     .pill-muted {
       font-size: 11px;
       color: var(--text-soft);
-    }
-
-    .kbd-inline {
-      font-family: "JetBrains Mono", monospace;
-      font-size: 11px;
-      padding: 1px 6px;
-      border-radius: 999px;
-      background: rgba(15,23,42,0.9);
-      border: 1px solid rgba(55,65,81,0.9);
-      color: #e5e7eb;
     }
 
     /* Responsive */
     @media (max-width: 960px) {
       body {
         padding: 10px;
+        height: auto;
+        min-height: 100vh;
       }
 
       .app-shell {
         flex-direction: column;
         max-height: none;
+        height: auto;
+        overflow: visible;
       }
 
       .sidebar {
@@ -868,7 +853,7 @@
       </header>
 
       <section class="panels">
-        <!-- Left: primary interaction (changes per view) -->
+        <!-- Left: primary interaction -->
         <section class="panel" id="panel-left">
           <div class="panel-header">
             <div class="panel-header-left">
@@ -877,9 +862,7 @@
             </div>
             <span class="pill-muted" id="panel-left-counter"></span>
           </div>
-          <div class="panel-body" id="panel-left-body">
-            <!-- Flashcard content injected here -->
-          </div>
+          <div class="panel-body" id="panel-left-body"></div>
         </section>
 
         <!-- Right: supporting content -->
@@ -890,16 +873,13 @@
               <span class="panel-pill" id="panel-right-subtitle">Context + your own examples</span>
             </div>
           </div>
-          <div class="panel-body" id="panel-right-body">
-            <!-- Cloze / notes injected here -->
-          </div>
+          <div class="panel-body" id="panel-right-body"></div>
         </section>
       </section>
     </main>
   </div>
 
   <script>
-    // --- Content data ---------------------------------------------------------
     const FLASHCARDS = [
       {
         swedish: "trots att",
@@ -1019,8 +999,7 @@
       }
     ];
 
-    // --- State ----------------------------------------------------------------
-    let currentView = "flashcards"; // 'flashcards' | 'sentences' | 'cloze'
+    let currentView = "flashcards";
     let flashIndex = 0;
     let sentenceIndex = 0;
     let clozeIndex = 0;
@@ -1036,7 +1015,7 @@
 
     function todayKey() {
       const d = new Date();
-      return d.toISOString().slice(0, 10); // YYYY-MM-DD
+      return d.toISOString().slice(0, 10);
     }
 
     function loadNumber(key, fallback = 0) {
@@ -1096,7 +1075,6 @@
       label.textContent = `Streak: ${newStreak} day${newStreak === 1 ? "" : "s"}`;
     }
 
-    // --- Rendering: Panels ----------------------------------------------------
     function render() {
       updateNavBadges();
       if (currentView === "flashcards") {
@@ -1131,7 +1109,6 @@
       rightTitle.textContent = "Cloze · konnektorer";
       rightSubtitle.textContent = "Snabb läsövning + dina egna exempel";
 
-      // Left: flashcard
       leftBody.innerHTML = "";
       const flashEl = document.createElement("div");
       flashEl.className = "flashcard";
@@ -1164,7 +1141,6 @@
         });
       });
 
-      // Right: cloze + notes combined
       rightBody.innerHTML = "";
       const cloze = CLOZE_ITEMS[clozeIndex];
       const clozeContainer = document.createElement("div");
@@ -1172,7 +1148,7 @@
       clozeContainer.innerHTML = `
         <div class="cloze-text">
           ${cloze.textBefore}
-          <span class="cloze-gap" id="cloze-gap">${"____"}</span>
+          <span class="cloze-gap" id="cloze-gap">____</span>
           ${cloze.textAfter}
         </div>
         <div class="cloze-options" id="cloze-options"></div>
@@ -1299,7 +1275,6 @@
 
       setTimeout(() => input.focus(), 30);
 
-      // Right: short grammar hints
       rightBody.innerHTML = `
         <div class="note-panel">
           <div class="note-label">Regel · påminnelse</div>
@@ -1376,7 +1351,6 @@
         render();
       });
 
-      // Right: summary notes
       rightBody.innerHTML = `
         <div class="note-panel">
           <div class="note-label">Sammanfatta texten</div>
@@ -1388,7 +1362,6 @@
       `;
     }
 
-    // --- Handlers -------------------------------------------------------------
     function handleFlashEase(ease) {
       if (ease === "easy") {
         addXp(3);
@@ -1398,7 +1371,6 @@
         flashIndex = (flashIndex + 1) % FLASHCARDS.length;
       } else if (ease === "hard") {
         addXp(1);
-        // Show same card one more time, but still advance occasionally
         if (Math.random() > 0.6) {
           flashIndex = (flashIndex + 1) % FLASHCARDS.length;
         }
@@ -1418,7 +1390,6 @@
       });
     }
 
-    // --- Init -----------------------------------------------------------------
     document.addEventListener("DOMContentLoaded", () => {
       setupNav();
       updateStreak();
